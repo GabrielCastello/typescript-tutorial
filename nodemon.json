@@ -1,12 +1,14 @@
 {
-  "exec": "tsc src/public/*.ts && ts-node src/index.ts",
+  "exec": "ts-node src/server/server.ts",
   "execMap": {
     "ts": "node --inspect=0.0.0.0:9229 --nolazy -r ts-node/register"
   },
   "ext": "*.ts",
-  "ignore": [],
+  "ignore": [
+    "client/*"
+  ],
   "verbose": true,
   "watch": [
-    "src/**/*.ts"
+    "src/server/*.ts"
   ]
 }

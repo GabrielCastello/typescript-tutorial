@@ -1,17 +1,27 @@
 version: '3.7'
 
 services:
-  ts-node-docker:
+  server:
     build:
       context: .
       dockerfile: Dockerfile
-      target: base
+      target: development
     volumes:
       - ./src:/home/node/app/src
       - ./nodemon.json:/home/node/app/nodemon.json
-    container_name: ts-node-docker
+    container_name: server
     expose:
       - '4000'
     ports:
       - '4000:4000'
-    command: npm run dev
+    command: npm run server
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - ./src:/home/node/app/src
+      - ./tsconfig.json:/home/node/app/tsconfig.json
+    container_name: client
+    command: npm run client
